@@ -13,7 +13,9 @@ node {
     def dockerImage
  
     def dockerImageTag = "${dockerhubaccountid}/${application}:${env.BUILD_NUMBER}"
-    
+     script {
+          System.setProperty("org.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL", "300");
+   } 
     stage('Clone Repo') { 
       // Get some code from a GitHub repository
       git url:'https://github.com/vdharmaraj/PGDO_Proj3.git',branch:'main' //update your forked repo
